@@ -1,128 +1,16 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech & Trend Studio | Digital Solutions</title>
-    <style>
-        /* Palette colori scelta: Blu #284b99 e Verde #08d962 */
-        :root {
-            --primary-blue: #284b99;
-            --accent-green: #08d962;
-            --dark-bg: #1a1a1a;
-            --light-text: #f4f4f4;
-        }
+<p>Accettiamo pagamenti rapidi tramite <strong>Codici Ricarica Amazon o Google Play</strong>.</p>
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--dark-bg);
-            color: var(--light-text);
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        header {
-            padding: 40px 20px;
-            text-align: center;
-            border-bottom: 2px solid var(--primary-blue);
-            width: 100%;
-        }
-
-        .logo-container img {
-            max-width: 180px; /* Logo ingrandito come richiesto */
-            height: auto;
-            border: 2px solid var(--accent-green);
-            padding: 10px;
-            border-radius: 15px;
-        }
-
-        h1 {
-            color: var(--accent-green);
-            letter-spacing: 2px;
-            margin-top: 20px;
-        }
-
-        .container {
-            max-width: 800px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .services {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .card {
-            background: #252525;
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 5px solid var(--primary-blue);
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-left-color: var(--accent-green);
-        }
-
-        .btn-order {
-            display: inline-block;
-            margin-top: 40px;
-            padding: 15px 30px;
-            background-color: var(--accent-green);
-            color: var(--dark-bg);
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 30px;
-            transition: background 0.3s;
-        }
-
-        .btn-order:hover {
-            background-color: #06b351;
-        }
-
-        footer {
-            margin-top: auto;
-            padding: 20px;
-            font-size: 0.8rem;
-            color: #666;
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <div class="logo-container">
-            <img src="logo.png" alt="Tech & Trend Studio Logo">
+<div class="services">
+    <a href="tech.html" style="text-decoration: none; color: inherit;">
+        <div class="card">
+            <h3>Tech Side</h3>
+            <p>Sorgenti Python, script HTML/CSS e automazioni. <br> <strong>A partire da €5,00</strong></p>
         </div>
-        <h1>TECH & TREND STUDIO</h1>
-        <p>Siamo tecnici, ma creiamo arte.</p>
-    </header>
-
-    <div class="container">
-        <div class="services">
-            <div class="card">
-                <h3>Tech Side</h3>
-                <p>Coding in Python, HTML/CSS e schemi tecnici precisi per i tuoi progetti.</p>
-            </div>
-            <div class="card">
-                <h3>Trend Side</h3>
-                <p>Video B-Roll, copywriting creativo e poster estetici per i tuoi social.</p>
-            </div>
+    </a>
+    <a href="trend.html" style="text-decoration: none; color: inherit;">
+        <div class="card">
+            <h3>Trend Side</h3>
+            <p>Editing video B-Roll e grafiche social. <br> <strong>A partire da €10,00</strong></p>
         </div>
-
-        <a href="#" class="btn-order">Ordina via Mail (Google Form)</a>
-    </div>
-
-    <footer>
-        &copy; 2026 Tech & Trend Studio - Tech Project
-    </footer>
-
-</body>
-</html>
+    </a>
+</div>
