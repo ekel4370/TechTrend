@@ -1,16 +1,111 @@
-<p>Accettiamo pagamenti rapidi tramite <strong>Codici Ricarica Amazon o Google Play</strong>.</p>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech & Trend Studio | Amazon Style Store</title>
+    <style>
+        :root {
+            --primary-blue: #284b99;
+            --accent-green: #08d962;
+            --dark-bg: #1a1a1a;
+            --light-text: #f4f4f4;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            padding: 30px;
+            text-align: center;
+            width: 100%;
+            background: #232f3e; /* Colore scuro stile Amazon */
+            border-bottom: 4px solid var(--accent-green);
+        }
+        .logo-container img {
+            max-width: 150px;
+        }
+        .payment-info {
+            background: #fff;
+            color: #000;
+            padding: 10px 20px;
+            margin: 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            border-left: 5px solid #ff9900; /* Arancione Amazon per i pagamenti */
+        }
+        .services {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .card {
+            background: #252525;
+            padding: 20px;
+            border-radius: 8px;
+            width: 280px;
+            border: 1px solid #444;
+            transition: 0.3s;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+        }
+        .card:hover {
+            border-color: var(--accent-green);
+            transform: scale(1.02);
+        }
+        .price {
+            font-size: 1.5rem;
+            color: var(--accent-green);
+            display: block;
+            margin: 10px 0;
+        }
+        .btn-view {
+            background: #febd69;
+            color: #111;
+            padding: 8px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
 
-<div class="services">
-    <a href="tech.html" style="text-decoration: none; color: inherit;">
-        <div class="card">
+    <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo">
+        </div>
+        <h1 style="color: white; margin: 10px 0;">TECH & TREND STUDIO</h1>
+    </header>
+
+    <div class="payment-info">
+        ⚠️ Accettiamo pagamenti rapidi tramite Codici Ricarica Amazon o Google Play.
+    </div>
+
+    <div class="services">
+        <a href="tech.html" class="card">
             <h3>Tech Side</h3>
-            <p>Sorgenti Python, script HTML/CSS e automazioni. <br> <strong>A partire da €5,00</strong></p>
-        </div>
-    </a>
-    <a href="trend.html" style="text-decoration: none; color: inherit;">
-        <div class="card">
+            <p>Sorgenti Python, script HTML/CSS e automazioni.</p>
+            <span class="price">da €5,00</span>
+            <span class="btn-view">Vedi Articoli</span>
+        </a>
+
+        <a href="trend.html" class="card">
             <h3>Trend Side</h3>
-            <p>Editing video B-Roll e grafiche social. <br> <strong>A partire da €10,00</strong></p>
-        </div>
-    </a>
-</div>
+            <p>Editing video B-Roll e grafiche social di tendenza.</p>
+            <span class="price">da €10,00</span>
+            <span class="btn-view">Vedi Articoli</span>
+        </a>
+    </div>
+
+</body>
+</html>
