@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech & Trend Studio</title>
+    <title>TechTrend</title>
     <style>
         :root {
             --primary-blue: #284b99;
@@ -50,7 +50,7 @@
             letter-spacing: 2px;
         }
 
-        /* Pulsante Menu Allineato */
+        /* Pulsante Menu Allineato correttamente */
         .menu-toggle {
             position: fixed;
             right: 0;
@@ -65,11 +65,12 @@
             writing-mode: vertical-rl;
             font-size: 11px;
             font-weight: bold;
-            transition: 0.4s;
+            /* Transizione fluida per seguire il bordo */
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             text-align: center;
         }
 
-        /* Sidebar Smussata */
+        /* Sidebar Smussata sopra e sotto a sinistra */
         .sidebar {
             position: fixed;
             right: -280px;
@@ -77,6 +78,7 @@
             height: 90%;
             width: 240px;
             background: var(--sidebar-bg);
+            /* Smussatura che segue la tua linea bianca */
             border-radius: 40px 0 0 40px;
             border: 2px solid var(--accent-green);
             transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -159,7 +161,7 @@
 
     <header>
         <div class="logo-box"><img src="logo.png"></div>
-        <h1>TECH TREND</h1>
+        <h1>TechTrend</h1>
     </header>
 
     <div class="menu-toggle" onclick="toggleMenu()" id="toggleBtn">MENU ◀</div>
@@ -182,11 +184,11 @@
                <span class="more-link" onclick="toggleInfo()">di più</span>
             </p>
             <div id="infoExtra" class="info-extra">
-                <strong>Perché questo metodo?</strong><br>
+                <strong>Perché abbiamo scelto questo metodo?</strong><br>
                 È immediato, sicuro e non richiede la condivisione di dati bancari. <br><br>
                 <strong>Vantaggi:</strong><br>
                 * Attivazione istantanea del servizio.<br>
-                * Massima privacy per lo studente e il cliente.<br>
+                * Massima privacy per il cliente.<br>
                 * Nessuna commissione aggiuntiva.
             </div>
         </div>
@@ -199,6 +201,7 @@
             sidebar.classList.toggle('open');
             if(sidebar.classList.contains('open')) {
                 btn.innerHTML = 'CHIUDI ▶';
+                /* Allineamento millimetrico al bordo della sidebar aperta */
                 btn.style.right = '240px';
             } else {
                 btn.innerHTML = 'MENU ◀';
