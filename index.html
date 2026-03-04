@@ -15,7 +15,6 @@
             --nav-bg: rgba(30, 30, 30, 0.95);
         }
 
-        /* Scorrimento fluido tra le sezioni */
         html {
             scroll-behavior: smooth;
         }
@@ -66,7 +65,7 @@
             color: white;
         }
 
-        /* --- Barra di Navigazione Inferiore (Stile Awwwards) --- */
+        /* --- Barra di Navigazione Inferiore con Animazione --- */
         .bottom-nav {
             position: fixed;
             bottom: 30px;
@@ -90,16 +89,21 @@
             border-radius: 12px;
             font-size: 0.85rem;
             font-weight: 600;
-            transition: 0.3s;
+            transition: all 0.3s ease; /* Transizione per lo spostamento del colore */
             cursor: pointer;
         }
 
-        .nav-item:hover { color: white; background: rgba(255, 255, 255, 0.1); }
-        .nav-item.active { background: #f0f0f0; color: #000; }
+        .nav-item:hover { color: white; }
+        
+        /* La "pillola" bianca */
+        .nav-item.active { 
+            background: #f4f4f4; 
+            color: #000; 
+        }
 
         .nav-divider { width: 1px; height: 25px; background: #444; margin: 0 5px; }
 
-        /* --- Struttura Single Page --- */
+        /* --- Struttura --- */
         main {
             padding: 110px 20px 100px 20px;
             max-width: 1200px;
@@ -108,7 +112,7 @@
 
         .section-container {
             margin-bottom: 60px;
-            scroll-margin-top: 100px; /* Spazio per non finire sotto l'header quando si scende */
+            scroll-margin-top: 120px; /* Offset per l'header fisso */
         }
 
         .payment-banner {
@@ -126,25 +130,18 @@
             margin-bottom: 40px;
         }
 
-        /* --- Card Trasformate in Sezioni Articoli --- */
         .article-card {
             background: #1e1e1e;
             padding: 40px;
             border-radius: 30px;
             border: 1px solid #333;
             margin-bottom: 40px;
-            transition: 0.3s;
         }
 
         .article-card.tech { border-top: 8px solid #00a8e8; }
         .article-card.trend { border-top: 8px solid #3adb76; }
 
-        .article-card h2 {
-            font-size: 2rem;
-            margin-top: 0;
-            color: white;
-            text-align: center;
-        }
+        .article-card h2 { font-size: 2rem; margin-top: 0; color: white; text-align: center; }
 
         .article-list {
             display: grid;
@@ -153,18 +150,12 @@
             margin-top: 30px;
         }
 
-        .item {
-            background: #2a2a2a;
-            padding: 20px;
-            border-radius: 15px;
-            border: 1px solid #444;
-        }
-
+        .item { background: #2a2a2a; padding: 20px; border-radius: 15px; border: 1px solid #444; }
         .item h3 { margin-top: 0; color: var(--accent-green); font-size: 1.1rem; }
-        .item p { font-size: 0.9rem; color: #ccc; line-height: 1.4; }
+        .item p { font-size: 0.9rem; color: #ccc; }
         .item .price { font-weight: bold; color: white; margin-top: 10px; display: block; }
 
-        /* --- Overlay (Invariato) --- */
+        /* Overlay */
         .overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background-color: rgba(0, 0, 0, 0); display: none; 
@@ -179,28 +170,28 @@
             transform: translateY(100vh); transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
         .overlay.show .overlay-content { transform: translateY(0); }
-        .close-overlay { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; font-weight: bold; }
+        .close-overlay { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; }
     </style>
 </head>
 <body>
 
-    <div id="pageWrapper" style="width: 100%; transition: filter 0.4s ease;">
+    <div id="pageWrapper">
         <header>
             <div class="logo-box"><img src="logo.png" alt="Logo"></div>
             <h1>TECH TREND</h1>
         </header>
 
         <nav class="bottom-nav">
-            <a href="#" class="nav-item active">Home</a>
+            <a href="#" class="nav-item active" id="nav-home">Home</a>
             <div class="nav-divider"></div>
-            <a href="#tech-section" class="nav-item">Tech Side</a>
-            <a href="#trend-section" class="nav-item">Trend Side</a>
+            <a href="#tech-section" class="nav-item" id="nav-tech">Tech Side</a>
+            <a href="#trend-section" class="nav-item" id="nav-trend">Trend Side</a>
             <div class="nav-divider"></div>
             <a href="carrello.html" class="nav-item">Carrello</a>
             <a href="faq.html" class="nav-item">FAQ</a>
         </nav>
 
-        <main>
+        <main id="top">
             <div class="payment-banner">
                 <span>Accettiamo pagamenti rapidi tramite Codici Ricarica Amazon o Google Play.</span>
                 <span style="color:var(--primary-blue); text-decoration:underline; cursor:pointer;" onclick="openOverlay()">di più</span>
@@ -209,23 +200,16 @@
             <section id="tech-section" class="section-container">
                 <div class="article-card tech">
                     <h2>TECH SIDE</h2>
-                    <p style="text-align:center; color:#aaa;">Sviluppo software, automazioni e soluzioni tecniche su misura.</p>
-                    
                     <div class="article-list">
                         <div class="item">
                             <h3>Script Python</h3>
-                            <p>Automazioni personalizzate per gestire dati o task ripetitivi sul tuo PC.</p>
+                            <p>Automazioni personalizzate per gestire dati.</p>
                             <span class="price">da €5,00</span>
                         </div>
                         <div class="item">
                             <h3>Web Bot</h3>
-                            <p>Bot per monitoraggio siti web o interazioni automatiche sicure.</p>
+                            <p>Bot per monitoraggio siti web.</p>
                             <span class="price">da €15,00</span>
-                        </div>
-                        <div class="item">
-                            <h3>Correzione Codice</h3>
-                            <p>Analisi e fix per bug nei tuoi progetti HTML, CSS o JavaScript.</p>
-                            <span class="price">da €10,00</span>
                         </div>
                     </div>
                 </div>
@@ -234,23 +218,16 @@
             <section id="trend-section" class="section-container">
                 <div class="article-card trend">
                     <h2>TREND SIDE</h2>
-                    <p style="text-align:center; color:#aaa;">Design moderno, editing video e contenuti estetici per i social.</p>
-                    
                     <div class="article-list">
                         <div class="item">
                             <h3>Video B-Roll</h3>
-                            <p>Editing cinematografico per Reel e TikTok con transizioni fluide.</p>
+                            <p>Editing cinematografico per Reel e TikTok.</p>
                             <span class="price">da €10,00</span>
                         </div>
                         <div class="item">
                             <h3>Poster Estetici</h3>
-                            <p>Grafiche digitali minimaliste per arredamento o social media.</p>
+                            <p>Grafiche digitali minimaliste.</p>
                             <span class="price">da €15,00</span>
-                        </div>
-                        <div class="item">
-                            <h3>Copywriting Creativo</h3>
-                            <p>Scrittura di testi accattivanti per brand e profili personali.</p>
-                            <span class="price">da €5,00</span>
                         </div>
                     </div>
                 </div>
@@ -263,37 +240,61 @@
             <span class="close-overlay" onclick="closeOverlay()">&times;</span>
             <h2>Metodo di Pagamento</h2>
             <ul>
-                <li><strong>Immediati:</strong> Iniziamo subito il lavoro.</li>
-                <li><strong>Sicuri:</strong> Nessun dato bancario richiesto.</li>
-                <li><strong>Privati:</strong> Massima privacy per te e per noi.</li>
+                <li><strong>Immediati:</strong> Iniziamo subito.</li>
+                <li><strong>Sicuri:</strong> No dati bancari.</li>
+                <li><strong>Privati:</strong> Massima privacy.</li>
             </ul>
         </div>
     </div>
 
     <script>
+        // Funzione per gestire il cambio di stato attivo nel menu mentre si scende (ScrollSpy)
+        const sections = document.querySelectorAll('.section-container');
+        const navItems = {
+            'tech-section': document.getElementById('nav-tech'),
+            'trend-section': document.getElementById('nav-trend'),
+            'home': document.getElementById('nav-home')
+        };
+
+        window.addEventListener('scroll', () => {
+            let current = 'home';
+            
+            // Controlliamo quale sezione è al centro dello schermo
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            // Rimuoviamo la classe active da tutti e la mettiamo a quello corrente
+            Object.values(navItems).forEach(item => item.classList.remove('active'));
+            if (navItems[current]) {
+                navItems[current].classList.add('active');
+            }
+        });
+
+        // Funzioni Overlay
         function openOverlay() {
             const overlay = document.getElementById('paymentOverlay');
-            const wrapper = document.getElementById('pageWrapper');
             overlay.style.display = 'flex';
             setTimeout(() => {
                 overlay.classList.add('show');
-                wrapper.classList.add('blur-effect');
+                document.getElementById('pageWrapper').classList.add('blur-effect');
             }, 10);
             document.body.style.overflow = 'hidden';
         }
 
         function closeOverlay() {
             const overlay = document.getElementById('paymentOverlay');
-            const wrapper = document.getElementById('pageWrapper');
             overlay.classList.remove('show');
-            wrapper.classList.remove('blur-effect');
+            document.getElementById('pageWrapper').classList.remove('blur-effect');
             setTimeout(() => { overlay.style.display = 'none'; }, 500);
             document.body.style.overflow = '';
         }
 
         function closeOverlayIfOutside(event) {
-            const overlay = document.getElementById('paymentOverlay');
-            if (event.target === overlay) { closeOverlay(); }
+            if (event.target.id === 'paymentOverlay') { closeOverlay(); }
         }
     </script>
 </body>
