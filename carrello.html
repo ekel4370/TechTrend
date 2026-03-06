@@ -3,133 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechTrend - Carrello</title>
+    <title>Tech & Trend Studio - Carrello</title>
     <style>
-        /* Stili Generali */
+        :root {
+            --primary-blue: #284b99;
+            --accent-green: #08d962;
+            --dark-bg: #0f0f0f;
+            --sidebar-bg: #232f3e;
+            --light-text: #f4f4f4;
+            --payment-orange: #ff9900;
+            --nav-bg: rgba(30, 30, 30, 0.95);
+        }
+
         body {
-            background-color: #121212;
-            color: white;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--light-text);
             margin: 0;
-            padding: 0;
+            overflow-x: hidden;
         }
 
-        /* NAVBAR CON PILLOLA BIANCA */
-        .navbar {
+        /* --- Header --- */
+        header {
             display: flex;
-            justify-content: center;
-            padding: 30px 0;
+            align-items: center;
+            height: 70px;
+            background: var(--sidebar-bg);
+            padding-left: 20px;
+            border-bottom-right-radius: 40px; 
+            border-bottom: 2px solid var(--primary-blue);
+            width: fit-content;
+            padding-right: 40px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
         }
 
+        .logo-box { background: white; padding: 5px; border-radius: 12px; display: flex; align-items: center; }
+        .logo-box img { max-width: 45px; }
+        header h1 { margin-left: 15px; font-size: 1.2rem; letter-spacing: 2px; color: white; margin: 0; }
+
+        /* --- Barra di Navigazione (Pillola) --- */
         .nav-container {
-            position: relative;
-            display: flex;
-            background-color: #1e1e1e;
-            padding: 10px 25px;
-            border-radius: 50px;
-            gap: 15px;
-            border: 1px solid #333;
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
         }
 
-        .nav-link {
-            text-decoration: none;
-            color: #888;
-            font-weight: 500;
-            padding: 10px 20px;
-            z-index: 2;
-            transition: color 0.3s;
-        }
-
-        /* La Pillola Bianca posizionata su "Carrello" */
-        .pill {
-            position: absolute;
-            height: 75%;
-            width: 100px; /* Larghezza specifica per la parola Carrello */
-            background-color: white;
-            border-radius: 50px;
-            top: 12.5%;
-            left: 268px; /* Posizione calcolata per stare sul quarto elemento */
-            z-index: 1;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-
-        .nav-link.active {
-            color: black; /* Testo nero quando c'è la pillola sotto */
-        }
-
-        .nav-link:hover:not(.active) {
-            color: white;
-        }
-
-        /* CONTENUTO CARRELLO */
-        .cart-section {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            background: #1e1e1e;
+        .bottom-nav {
+            background: var(--nav-bg);
+            padding: 8px;
             border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            border: 1px solid #444;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        .nav-pill {
+            position: absolute;
+            background: #f4f4f4;
+            border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            z-index: 0;
+        }
+
+        .nav-item {
+            color: #999;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav-item.active { color: #000; }
+        .nav-divider { width: 1px; height: 25px; background: #444; margin: 0 5px; z-index: 1; }
+
+        /* --- Sezione Carrello --- */
+        main {
+            padding: 150px 20px 50px 20px;
+            max-width: 800px;
+            margin: 0 auto;
             text-align: center;
         }
 
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px;
-            border-bottom: 1px solid #333;
+        .cart-card {
+            background: #1e1e1e;
+            padding: 40px;
+            border-radius: 30px;
+            border: 1px solid #333;
+            border-top: 8px solid var(--payment-orange);
         }
 
         .checkout-btn {
-            background-color: white;
+            background: white;
             color: black;
             border: none;
-            padding: 15px 4
-padding: 15px 40px;
+            padding: 15px 40px;
             border-radius: 50px;
             font-weight: bold;
             cursor: pointer;
-            margin-top: 20px;
-            transition: transform 0.2s;
+            margin-top: 30px;
+            transition: 0.3s;
         }
 
-        .checkout-btn:hover {
-            transform: scale(1.05);
-        }
+        .checkout-btn:hover { transform: scale(1.05); background: var(--payment-orange); }
 
-        footer {
+        /* --- Footer --- */
+        .site-footer {
             text-align: center;
-            padding: 40px;
+            padding: 60px 20px 120px 20px;
+            border-top: 1px solid #222;
+        }
+
+        .site-footer p {
+            font-size: 0.75rem;
             color: #555;
-            font-size: 0.9em;
+            letter-spacing: 1px;
+            margin: 5px 0;
+            text-transform: uppercase;
         }
     </style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="nav-link">Home</a>
-            <a href="tech.html" class="nav-link">Tech</a>
-            <a href="trend.html" class="nav-link">Trend</a>
-            <a href="carrello.html" class="nav-link active">Carrello</a>
-            <a href="FAQ.html" class="nav-link">FAQ</a>
-            <div class="pill"></div>
-        </div>
-    </nav>
+    <header>
+        <div class="logo-box"><img src="logo.png" alt="Logo"></div>
+        <h1>TECH TREND</h1>
+    </header>
 
-    <main class="cart-section">
-        <h1>Il tuo Carrello</h1>
-        <div id="cart-list">
-            <p style="color: #888;">Il tuo carrello è attualmente vuoto.</p>
+    <div class="nav-container">
+        <nav class="bottom-nav" id="mainNav">
+            <div class="nav-pill" id="navPill"></div>
+            <a href="index.html" class="nav-item">Home</a>
+            <div class="nav-divider"></div>
+            <a href="index.html#tech-section" class="nav-item">Tech Side</a>
+            <a href="index.html#trend-section" class="nav-item">Trend Side</a>
+            <div class="nav-divider"></div>
+            <a href="carrello.html" class="nav-item active" id="nav-cart">Carrello</a>
+            <a href="faq.html" class="nav-item">FAQ</a>
+        </nav>
+    </div>
+
+    <main>
+        <div class="cart-card">
+            <h2>IL TUO CARRELLO</h2>
+            <div id="cart-content">
+                <p style="color: #666;">Il carrello è vuoto.</p>
+            </div>
+            <div style="margin-top: 20px; font-size: 1.5rem; font-weight: bold;">
+                TOTALE: € 0,00
+            </div>
+            <button class="checkout-btn">PROCEDI AL PAGAMENTO</button>
         </div>
-        <hr style="border: 0; border-top: 1px solid #333; margin: 20px 0;">
-        <h3>Totale: € <span id="total-price">0.00</span></h3>
-        <button class="checkout-btn">Procedi al Pagamento</button>
     </main>
 
-    <footer>
-        <p>© 2026 TechTrend. Creato per il progetto scolastico.</p>
+    <footer class="site-footer">
+        <p>&copy; 2026 TECH & TREND STUDIO. TUTTI I DIRITTI RISERVATI.</p>
+        <p style="opacity: 0.5;">DESIGNED FOR INNOVATION</p>
     </footer>
 
+    <script>
+        const navPill = document.getElementById('navPill');
+        const mainNav = document.getElementById('mainNav');
+
+        function updatePill(target) {
+            if (!target) return;
+            const rect = target.getBoundingClientRect();
+            const navRect = mainNav.getBoundingClientRect();
+            
+            navPill.style.width = rect.width + 'px';
+            navPill.style.height = rect.height + 'px';
+            navPill.style.left = (rect.left - navRect.left) + 'px';
+            navPill.style.top = (rect.top - navRect.top) + 'px';
+        }
+
+        // Posiziona la pillola sul Carrello al caricamento
+        window.addEventListener('load', () => {
+            const activeItem = document.querySelector('.nav-item.active');
+            updatePill(activeItem);
+        });
+
+        // Gestione ridimensionamento finestra per mantenere la pillola in posizione
+        window.addEventListener('resize', () => {
+            updatePill(document.querySelector('.nav-item.active'));
+        });
+    </script>
 </body>
 </html>
