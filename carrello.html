@@ -1,1 +1,86 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechTrend - Carrello</title>
+    <style>
+        /* Stili Generali */
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
+        /* NAVBAR CON PILLOLA BIANCA */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            padding: 30px 0;
+        }
+
+        .nav-container {
+            position: relative;
+            display: flex;
+            background-color: #1e1e1e;
+            padding: 10px 25px;
+            border-radius: 50px;
+            gap: 15px;
+            border: 1px solid #333;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #888;
+            font-weight: 500;
+            padding: 10px 20px;
+            z-index: 2;
+            transition: color 0.3s;
+        }
+
+        /* La Pillola Bianca posizionata su "Carrello" */
+        .pill {
+            position: absolute;
+            height: 75%;
+            width: 100px; /* Larghezza specifica per la parola Carrello */
+            background-color: white;
+            border-radius: 50px;
+            top: 12.5%;
+            left: 268px; /* Posizione calcolata per stare sul quarto elemento */
+            z-index: 1;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .nav-link.active {
+            color: black; /* Testo nero quando c'è la pillola sotto */
+        }
+
+        .nav-link:hover:not(.active) {
+            color: white;
+        }
+
+        /* CONTENUTO CARRELLO */
+        .cart-section {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #1e1e1e;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #333;
+        }
+
+        .checkout-btn {
+            background-color: white;
+            color: black;
+            border: none;
+            padding: 15px 4
