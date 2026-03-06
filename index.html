@@ -67,7 +67,7 @@
             margin-bottom: 0;
         }
 
-        /* --- Barra di Navigazione Inferiore con Pillola Scorrevole --- */
+        /* --- Barra di Navigazione Inferiore --- */
         .nav-container {
             position: fixed;
             bottom: 30px;
@@ -88,7 +88,6 @@
             position: relative;
         }
 
-        /* La pillola bianca che scivola */
         .nav-pill {
             position: absolute;
             background: #f4f4f4;
@@ -124,7 +123,7 @@
 
         /* --- Contenuto Principale --- */
         main {
-            padding: 110px 20px 50px 20px;
+            padding: 110px 20px 150px 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -160,6 +159,7 @@
 
         .article-card.tech { border-top: 8px solid #00a8e8; }
         .article-card.trend { border-top: 8px solid #3adb76; }
+        .article-card.faq { border-top: 8px solid var(--payment-orange); }
 
         .article-card h2 {
             font-size: 2rem;
@@ -186,10 +186,25 @@
         .item p { font-size: 0.9rem; color: #ccc; line-height: 1.5; }
         .item .price { font-weight: bold; color: white; margin-top: 10px; display: block; }
 
-        /* --- Footer Credits --- */
+        /* --- Accordion FAQ --- */
+        .faq-container { max-width: 850px; margin: 30px auto 0; }
+        .faq-item { border-bottom: 1px solid #333; }
+        .faq-question {
+            width: 100%; background: none; border: none; color: white;
+            text-align: left; padding: 20px; font-size: 1.1rem; font-weight: 600;
+            cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+        }
+        .faq-question:hover { background: rgba(255, 255, 255, 0.05); }
+        .faq-question span { color: var(--accent-green); font-size: 1.5rem; transition: 0.3s; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; background: rgba(0,0,0,0.2); }
+        .faq-answer p { padding: 0 20px 20px 20px; color: #ccc; margin: 0; line-height: 1.6; }
+        .faq-item.active .faq-answer { max-height: 200px; }
+        .faq-item.active .faq-question span { transform: rotate(45deg); color: #ff4d4d; }
+
+        /* --- Footer --- */
         .site-footer {
             text-align: center;
-            padding: 60px 20px 120px 20px; /* Spazio extra per non finire sotto la nav */
+            padding: 60px 20px 120px 20px;
             border-top: 1px solid #222;
         }
 
@@ -234,140 +249,4 @@
                 <div class="nav-divider"></div>
                 <a href="#tech-section" class="nav-item" id="nav-tech">Tech Side</a>
                 <a href="#trend-section" class="nav-item" id="nav-trend">Trend Side</a>
-                <div class="nav-divider"></div>
-                <a href="carrello.html" class="nav-item">Carrello</a>
-                <a href="faq.html" class="nav-item">FAQ</a>
-            </nav>
-        </div>
-
-        <main>
-            <div class="payment-banner">
-                <span>Accettiamo pagamenti tramite Codici Ricarica Amazon o Google Play.</span>
-                <span style="color:var(--primary-blue); text-decoration:underline; cursor:pointer;" onclick="openOverlay()">di più</span>
-            </div>
-
-            <section id="tech-section" class="section-container">
-                <div class="article-card tech">
-                    <h2>TECH SIDE</h2>
-                    <p style="text-align:center; color:#aaa;">Soluzioni tecniche e automazioni.</p>
-                    <div class="article-list">
-                        <div class="item">
-                            <h3>Script Python</h3>
-                            <p>Automazioni personalizzate per gestire dati o task ripetitivi.</p>
-                            <span class="price">da €5,00</span>
-                        </div>
-                        <div class="item">
-                            <h3>Web Bot</h3>
-                            <p>Bot per monitoraggio siti o interazioni automatiche.</p>
-                            <span class="price">da €15,00</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="trend-section" class="section-container">
-                <div class="article-card trend">
-                    <h2>TREND SIDE</h2>
-                    <p style="text-align:center; color:#aaa;">Design moderno e contenuti social.</p>
-                    <div class="article-list">
-                        <div class="item">
-                            <h3>Video B-Roll</h3>
-                            <p>Editing cinematografico per Reel e TikTok.</p>
-                            <span class="price">da €10,00</span>
-                        </div>
-                        <div class="item">
-                            <h3>Poster Estetici</h3>
-                            <p>Grafiche digitali minimaliste per arredamento.</p>
-                            <span class="price">da €15,00</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <footer class="site-footer">
-            <p>&copy; 2026 TECH & TREND STUDIO. TUTTI I DIRITTI RISERVATI.</p>
-            <p style="opacity: 0.5;">DESIGNED FOR INNOVATION</p>
-        </footer>
-    </div>
-
-    <div class="overlay" id="paymentOverlay" onclick="closeOverlayIfOutside(event)">
-        <div class="overlay-content">
-            <span class="close-overlay" onclick="closeOverlay()">&times;</span>
-            <h2>Metodo di Pagamento</h2>
-            <p>Utilizziamo codici ricarica perché:</p>
-            <ul>
-                <li><strong>Immediati:</strong> Il lavoro parte subito.</li>
-                <li><strong>Sicuri:</strong> Non serve la carta di credito.</li>
-                <li><strong>Privati:</strong> Garanzia di anonimato per entrambi.</li>
-            </ul>
-        </div>
-    </div>
-
-    <script>
-        const navPill = document.getElementById('navPill');
-        const mainNav = document.getElementById('mainNav');
-        const sections = document.querySelectorAll('.section-container');
-        const navItems = document.querySelectorAll('.nav-item');
-
-        // Funzione per muovere fisicamente la pillola
-        function updatePill(target) {
-            if (!target) return;
-            const rect = target.getBoundingClientRect();
-            const navRect = mainNav.getBoundingClientRect();
-            
-            navPill.style.width = rect.width + 'px';
-            navPill.style.height = rect.height + 'px';
-            navPill.style.left = (rect.left - navRect.left) + 'px';
-            navPill.style.top = (rect.top - navRect.top) + 'px';
-        }
-
-        // Inizializzazione posizione pillola
-        window.addEventListener('load', () => updatePill(document.querySelector('.nav-item.active')));
-
-        // ScrollSpy con movimento fluido
-        window.addEventListener('scroll', () => {
-            let current = 'nav-home';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 150) {
-                    const id = section.getAttribute('id');
-                    if(id === 'tech-section') current = 'nav-tech';
-                    if(id === 'trend-section') current = 'nav-trend';
-                }
-            });
-
-            navItems.forEach(item => {
-                item.classList.remove('active');
-                if (item.id === current) {
-                    item.classList.add('active');
-                    updatePill(item);
-                }
-            });
-        });
-
-        // Funzioni Overlay
-        function openOverlay() {
-            const overlay = document.getElementById('paymentOverlay');
-            overlay.style.display = 'flex';
-            setTimeout(() => {
-                overlay.classList.add('show');
-                document.getElementById('pageWrapper').classList.add('blur-effect');
-            }, 10);
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeOverlay() {
-            const overlay = document.getElementById('paymentOverlay');
-            overlay.classList.remove('show');
-            document.getElementById('pageWrapper').classList.remove('blur-effect');
-            setTimeout(() => { overlay.style.display = 'none'; }, 500);
-            document.body.style.overflow = '';
-        }
-
-        function closeOverlayIfOutside(event) {
-            if (event.target.id === 'paymentOverlay') closeOverlay();
-        }
-    </script>
-</body>
-</html>
+                <a href="#faq-section" class="nav-item" id="nav-faq">FAQ
