@@ -228,7 +228,7 @@
             color: black;
             padding: 40px;
             border-radius: 20px;
-            max-width: 500px;
+            max-width: 600px;
             width: 90%;
             position: relative;
             border-left: 15px solid var(--payment-orange);
@@ -273,7 +273,7 @@
 
         <main>
             <div class="payment-banner">
-                <span>Accettiamo pagamenti tramite Codici Ricarica Amazon o Google Play.</span>
+                <span>si accettano pagamenti tramite Codici Ricarica Amazon o Google Play.</span>
                 <span style="color:var(--primary-blue); text-decoration:underline; cursor:pointer;" onclick="openOverlay()">di più</span>
             </div>
 
@@ -318,87 +318,3 @@
 
         <footer class="site-footer">
             <p>&copy; 2026 TECH & TREND STUDIO. TUTTI I DIRITTI RISERVATI.</p>
-            <p style="opacity: 0.5;">DESIGNED FOR INNOVATION</p>
-        </footer>
-    </div>
-
-    <div class="overlay" id="paymentOverlay" onclick="closeOverlayIfOutside(event)">
-        <div class="overlay-content">
-            <span class="close-overlay" onclick="closeOverlay()">&times;</span>
-            <h2>Metodo di Pagamento</h2>
-            <p>Utilizziamo codici ricarica perché:</p>
-            <ul>
-                <li><strong>Immediati:</strong> Il lavoro parte subito.</li>
-                <li><strong>Sicuri:</strong> Non serve la carta di credito.</li>
-                <li><strong>Privati:</strong> Garanzia di anonimato per entrambi.</li>
-            </ul>
-        </div>
-    </div>
-
-    <script>
-        const navPill = document.getElementById('navPill');
-        const mainNav = document.getElementById('mainNav');
-        const sections = document.querySelectorAll('.section-container');
-        const navItems = document.querySelectorAll('.nav-item');
-
-        // Funzione per muovere fisicamente la pillola
-        function updatePill(target) {
-            if (!target) return;
-            const rect = target.getBoundingClientRect();
-            const navRect = mainNav.getBoundingClientRect();
-            
-            navPill.style.width = rect.width + 'px';
-            navPill.style.height = rect.height + 'px';
-            navPill.style.left = (rect.left - navRect.left) + 'px';
-            navPill.style.top = (rect.top - navRect.top) + 'px';
-        }
-
-        // Inizializzazione posizione pillola
-        window.addEventListener('load', () => updatePill(document.querySelector('.nav-item.active')));
-
-        // ScrollSpy con movimento fluido
-        window.addEventListener('scroll', () => {
-            let current = 'nav-home';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 150) {
-                    const id = section.getAttribute('id');
-                    if(id === 'tech-section') current = 'nav-tech';
-                    if(id === 'trend-section') current = 'nav-trend';
-                }
-            });
-
-            navItems.forEach(item => {
-                item.classList.remove('active');
-                if (item.id === current) {
-                    item.classList.add('active');
-                    updatePill(item);
-                }
-            });
-        });
-
-        // Funzioni Overlay
-        function openOverlay() {
-            const overlay = document.getElementById('paymentOverlay');
-            overlay.style.display = 'flex';
-            setTimeout(() => {
-                overlay.classList.add('show');
-                document.getElementById('pageWrapper').classList.add('blur-effect');
-            }, 10);
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeOverlay() {
-            const overlay = document.getElementById('paymentOverlay');
-            overlay.classList.remove('show');
-            document.getElementById('pageWrapper').classList.remove('blur-effect');
-            setTimeout(() => { overlay.style.display = 'none'; }, 500);
-            document.body.style.overflow = '';
-        }
-
-        function closeOverlayIfOutside(event) {
-            if (event.target.id === 'paymentOverlay') closeOverlay();
-        }
-    </script>
-</body>
-</html>
